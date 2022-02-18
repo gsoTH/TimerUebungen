@@ -28,12 +28,14 @@ namespace TimerUebungen
             // Methode zuweisen, die ausgeführt wird, wenn der Intervall abgelaufen ist.
             timer.Tick += new EventHandler(TickEreignis); //Hier wird ein Delegat erzeugt.
 
-            timer.Start();
+            
         }
 
         private void TickEreignis(Object myObject, EventArgs myEventArgs)
         {
             rect.X += 5;
+
+            Refresh();
             
         }
 
@@ -47,8 +49,12 @@ namespace TimerUebungen
             //Zeichenmittel
             Brush brush = new SolidBrush(Color.MediumSpringGreen);
 
-            rect = new Rectangle(0, 0, 30, h);  
-            
+            if (timer.Enabled == false)
+            {
+                rect = new Rectangle(0, 0, 30, h);
+                timer.Start();
+            }
+
 
             g.FillRectangle(brush, rect);
 
