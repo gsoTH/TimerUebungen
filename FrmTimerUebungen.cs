@@ -7,7 +7,7 @@ namespace TimerUebungen
     public partial class FrmTimerUebungen : Form
     {
         Timer timer;
-        Rectangle rect;
+        Rectangle[] rects = new Rectangle[2];
         int h;
         int w;
 
@@ -35,10 +35,13 @@ namespace TimerUebungen
 
         private void TickEreignis(Object myObject, EventArgs myEventArgs)
         {
+            for(int i = 0; i < rects.Length; i++)
+            {
+                rects[i].X -= 5;
+            }
+            
 
-            rect.X -= 5;
-
-            if (rect.Right <= 0)
+            if (rects[0].Right <= 0)
             {
                 timer.Stop();
             }
@@ -59,12 +62,16 @@ namespace TimerUebungen
 
             if (timer.Enabled == false)
             {
-                rect = new Rectangle(w, 0, 30, h);
+                int anteil = h/5;
+                rects[0] = new Rectangle(w, 0, 30, anteil * 2);
+                rects[1] = new Rectangle(w, rects[0].Bottom + anteil, 30, anteil * 2);
                 timer.Start();
             }
 
-
-            g.FillRectangle(brush, rect);
+            foreach(Rectangle r in rects)
+            {
+                g.FillRectangle(brush, r);
+            }
 
         }
     }
