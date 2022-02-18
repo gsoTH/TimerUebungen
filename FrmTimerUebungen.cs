@@ -32,8 +32,9 @@ namespace TimerUebungen
         }
 
         private void TickEreignis(Object myObject, EventArgs myEventArgs)
-        { 
-           // Code einfügen, der nach jedem Tick ausgeführt werden soll.
+        {
+            rect.X += 5;
+            
         }
 
         private void FrmTimerUebungen_Paint(object sender, PaintEventArgs e)
@@ -42,6 +43,18 @@ namespace TimerUebungen
             Graphics g = e.Graphics;
             int h = this.ClientSize.Height;
             int w = this.ClientSize.Width;
+
+            //Zeichenmittel
+            Brush brush = new SolidBrush(Color.MediumSpringGreen);
+
+            rect = new Rectangle(0, 0, 30, h);  
+            
+
+            g.FillRectangle(brush, rect);
+
+            
+
+
         }
     }
 }
