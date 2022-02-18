@@ -30,25 +30,21 @@ namespace TimerUebungen
             // Methode zuweisen, die ausgeführt wird, wenn der Intervall abgelaufen ist.
             timer.Tick += new EventHandler(TickEreignis); //Hier wird ein Delegat erzeugt.
 
-            
+
         }
 
         private void TickEreignis(Object myObject, EventArgs myEventArgs)
         {
-            
-            rect.X += 5;
 
-            if(rect.Right >= w)
+            rect.X -= 5;
+
+            if (rect.Right <= 0)
             {
                 timer.Stop();
-            } 
-            else
-            {
-                Refresh();
             }
 
-            
-            
+            Refresh();
+
         }
 
         private void FrmTimerUebungen_Paint(object sender, PaintEventArgs e)
@@ -63,7 +59,7 @@ namespace TimerUebungen
 
             if (timer.Enabled == false)
             {
-                rect = new Rectangle(0, 0, 30, h);
+                rect = new Rectangle(w, 0, 30, h);
                 timer.Start();
             }
 
