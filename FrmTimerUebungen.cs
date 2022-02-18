@@ -8,6 +8,8 @@ namespace TimerUebungen
     {
         Timer timer;
         Rectangle rect;
+        int h;
+        int w;
 
         public FrmTimerUebungen()
         {
@@ -33,9 +35,19 @@ namespace TimerUebungen
 
         private void TickEreignis(Object myObject, EventArgs myEventArgs)
         {
+            
             rect.X += 5;
 
-            Refresh();
+            if(rect.Right >= w)
+            {
+                timer.Stop();
+            } 
+            else
+            {
+                Refresh();
+            }
+
+            
             
         }
 
@@ -43,8 +55,8 @@ namespace TimerUebungen
         {
             //Hilfsvariablen
             Graphics g = e.Graphics;
-            int h = this.ClientSize.Height;
-            int w = this.ClientSize.Width;
+            h = this.ClientSize.Height;
+            w = this.ClientSize.Width;
 
             //Zeichenmittel
             Brush brush = new SolidBrush(Color.MediumSpringGreen);
@@ -57,9 +69,6 @@ namespace TimerUebungen
 
 
             g.FillRectangle(brush, rect);
-
-            
-
 
         }
     }
