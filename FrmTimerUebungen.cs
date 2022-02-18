@@ -36,5 +36,12 @@ namespace TimerUebungen
            // Code einfügen, der nach jedem Tick ausgeführt werden soll.
         }
 
+        private void FrmTimerUebungen_Paint(object sender, PaintEventArgs e)
+        {
+            //Hilfsvariablen
+            Graphics g = e.Graphics;
+            int h = this.ClientSize.Height;
+            int w = this.ClientSize.Width;
+        }
     }
 }
