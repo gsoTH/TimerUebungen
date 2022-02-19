@@ -66,9 +66,10 @@ namespace TimerUebungen
                 int anteil = h/5;
 
                 int positionLuecke = rnd.Next(anteil, anteil * 3);
+                int dimensionLuecke = rnd.Next(Convert.ToInt32(anteil * 0.5), Convert.ToInt32(anteil * 1.5));
 
                 rects[0] = new Rectangle(w, 0, 30, positionLuecke);
-                rects[1] = new Rectangle(w, rects[0].Bottom + anteil, 30, h);
+                rects[1] = new Rectangle(w, rects[0].Bottom + dimensionLuecke, 30, h);
                 timer.Start();
             }
 
