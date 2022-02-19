@@ -64,7 +64,7 @@ namespace TimerUebungen
             {
                 int anteil = h/5;
                 rects[0] = new Rectangle(w, 0, 30, anteil * 2);
-                rects[1] = new Rectangle(w, rects[0].Bottom + anteil, 30, anteil * 2);
+                rects[1] = new Rectangle(w, rects[0].Bottom + anteil, 30, h);
                 timer.Start();
             }
 
