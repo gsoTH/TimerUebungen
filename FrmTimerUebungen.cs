@@ -37,14 +37,18 @@ namespace TimerUebungen
         private void TickEreignis(Object myObject, EventArgs myEventArgs)
         {
             HindernisBewegen();
+            CheckObHindernisAusserhalbDerFormIst();
 
+            Refresh();
+
+        }
+
+        private void CheckObHindernisAusserhalbDerFormIst()
+        {
             if (rects[0].Right <= 0)
             {
                 timer.Stop();
             }
-
-            Refresh();
-
         }
 
         private void HindernisBewegen()
