@@ -10,6 +10,7 @@ namespace TimerUebungen
         Rectangle[] rects = new Rectangle[2];
         int h;
         int w;
+        Random rnd = new Random();
 
         public FrmTimerUebungen()
         {
@@ -63,7 +64,10 @@ namespace TimerUebungen
             if (timer.Enabled == false)
             {
                 int anteil = h/5;
-                rects[0] = new Rectangle(w, 0, 30, anteil * 2);
+
+                int positionLuecke = rnd.Next(anteil, anteil * 3);
+
+                rects[0] = new Rectangle(w, 0, 30, positionLuecke);
                 rects[1] = new Rectangle(w, rects[0].Bottom + anteil, 30, h);
                 timer.Start();
             }
