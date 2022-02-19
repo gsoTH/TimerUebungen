@@ -63,21 +63,29 @@ namespace TimerUebungen
 
             if (timer.Enabled == false)
             {
-                int anteil = h/5;
-
-                int positionLuecke = rnd.Next(anteil, anteil * 3);
-                int dimensionLuecke = rnd.Next(Convert.ToInt32(anteil * 0.5), Convert.ToInt32(anteil * 1.5));
-
-                rects[0] = new Rectangle(w, 0, 30, positionLuecke);
-                rects[1] = new Rectangle(w, rects[0].Bottom + dimensionLuecke, 30, h);
+                int anteil = h / 5;
+                HindernisErzeugen(anteil);
                 timer.Start();
             }
 
-            foreach(Rectangle r in rects)
+            foreach (Rectangle r in rects)
             {
                 g.FillRectangle(brush, r);
             }
 
+        }
+
+        /// <summary>
+        /// Erzeugt zwei Hindernisse mit einer Lücke.
+        /// </summary>
+        /// <param name="anteil">Größenfaktor für Position und Dimension der Lücke.</param>
+        private void HindernisErzeugen(int anteil)
+        {
+            int positionLuecke = rnd.Next(anteil, anteil * 3);
+            int dimensionLuecke = rnd.Next(Convert.ToInt32(anteil * 0.5), Convert.ToInt32(anteil * 1.5));
+
+            rects[0] = new Rectangle(w, 0, 30, positionLuecke);
+            rects[1] = new Rectangle(w, rects[0].Bottom + dimensionLuecke, 30, h);
         }
     }
 }
