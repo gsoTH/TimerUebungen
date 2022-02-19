@@ -36,11 +36,7 @@ namespace TimerUebungen
 
         private void TickEreignis(Object myObject, EventArgs myEventArgs)
         {
-            for(int i = 0; i < rects.Length; i++)
-            {
-                rects[i].X -= 5;
-            }
-            
+            HindernisBewegen();
 
             if (rects[0].Right <= 0)
             {
@@ -49,6 +45,14 @@ namespace TimerUebungen
 
             Refresh();
 
+        }
+
+        private void HindernisBewegen()
+        {
+            for (int i = 0; i < rects.Length; i++)
+            {
+                rects[i].X -= 5;
+            }
         }
 
         private void FrmTimerUebungen_Paint(object sender, PaintEventArgs e)
